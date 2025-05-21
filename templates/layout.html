@@ -89,13 +89,17 @@ const restaurants = {
     }
 };
 
+let hideTimeout = null;
+const restaurantInfo = document.getElementById("restaurant-info");
+const dropdown = document.querySelector('.dropdown');
+
+// Появление при наведении на пункт ресторана
 document.querySelectorAll('.dropdown-menu li a').forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-        const data = restaurants[link.textContent];
+    link.addEventListener('mouseenter', () => {
+        const data = restaurants[link.textContent.trim()];
         if (data) {
-            const card = document.getElementById("restaurant-info");
-            card.style.display = "block";
+            clearTimeout(hideTimeout);
+            restaurantInfo.style.display = "block";
             document.getElementById("rest-img").src = data.img;
             document.getElementById("rest-name").textContent = data.name;
             document.getElementById("rest-address").textContent = "📍 " + data.address;
@@ -104,11 +108,33 @@ document.querySelectorAll('.dropdown-menu li a').forEach(link => {
     });
 });
 
-// Скрытие карточки при уходе мыши
-document.getElementById("restaurant-block").addEventListener("mouseleave", () => {
-    document.getElementById("restaurant-info").style.display = "none";
+// Задержка скрытия при уходе курсора
+dropdown.addEventListener('mouseleave', () => {
+    hideTimeout = setTimeout(() => {
+        restaurantInfo.style.display = "none";
+    }, 3000);
+});
+
+restaurantInfo.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout);
+});
+
+restaurantInfo.addEventListener('mouseleave', () => {
+    hideTimeout = setTimeout(() => {
+        restaurantInfo.style.display = "none";
+    }, 3000);
+});
+
+// Скрытие карточки при клике вне её
+document.addEventListener('click', function(event) {
+    const isInside = restaurantInfo.contains(event.target) || dropdown.contains(event.target);
+    if (!isInside) {
+        restaurantInfo.style.display = "none";
+        clearTimeout(hideTimeout);
+    }
 });
 </script>
+
 <script>
 const promotions = [
     {

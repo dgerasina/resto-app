@@ -69,38 +69,6 @@
     z-index: 1000;
 }
 
-.promo-card {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.promo-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 6px;
-    object-fit: cover;
-}
-
-.promo-card .info {
-    flex: 1;
-}
-
-.promo-card h4 {
-    margin: 0 0 6px;
-}
-
-.promo-card p {
-    margin: 0 0 4px;
-    font-size: 14px;
-    color: #555;
-}
-
-.promo-card .date {
-    font-size: 12px;
-    color: #888;
-}
-
 body.fire-theme {
     background-color: #1c1c1c;
     color: #f5f1ee;
@@ -210,42 +178,50 @@ button:hover {
     right: 20px;
     width: 320px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
+    background-color: #f5e8d5; /* бежевый фон */
+    color: #3a2e1e; /* тёмно-коричневый текст */
+    border: 1px solid #d8c7b1;
     border-radius: 12px;
-    color: #fdf6f0;
-    font-family: 'Manrope', sans-serif;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-}
-
-#restaurant-info h3 {
-    color: #ffe8c4;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-#restaurant-info p {
-    margin: 4px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
 }
 
 #restaurant-info img {
     width: 100%;
+    height: auto;
     border-radius: 8px;
     margin-bottom: 12px;
 }
 
+#rest-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3a2e1e;
+    margin-bottom: 8px;
+}
+
+#rest-address,
+#rest-phone {
+    font-size: 14px;
+    font-weight: normal;
+    color: #3a2e1e;
+    margin-bottom: 6px;
+}
+
 #rest-booking button {
-    background-color: #b47b56;
-    color: white;
-    padding: 8px 16px;
+    background-color: #8b5e3c; /* насыщенный коричневый */
+    color: #fff;
     border: none;
+    padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 #rest-booking button:hover {
-    background-color: #a56946;
+    background-color: #71492e;
 }
 
 #bg-video {
@@ -269,3 +245,50 @@ button:hover {
     text-decoration: underline;
     color: #fff0d6; /* почти белый */
 }
+
+.promo-card {
+    display: flex;
+    align-items: center;
+    background-color: #f5e8d5; /* мягкий бежевый */
+    color: #3a2e1e; /* тёмно-коричневый */
+    border-radius: 12px;
+    padding: 16px;
+    gap: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s ease;
+}
+
+.promo-card:hover {
+    transform: scale(1.02);
+}
+
+.promo-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #cbb89d;
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.promo-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #3a2e1e;
+}
+
+.promo-desc,
+.promo-date {
+    font-size: 14px;
+    font-weight: normal;
+    color: #3a2e1e;
+}
+
