@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Сеть ресторанов{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul class="nav">
+            <li class="dropdown" id="restaurant-block">
+                <a href="#">Рестораны ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Ресторан на Тверской</a></li>
+                    <li><a href="#">Ресторан на Веранде</a></li>
+                    <li><a href="#">Ресторан в Сити</a></li>
+                </ul>
+                <!-- Карточка ресторана -->
+<div id="restaurant-info" style="
+    display: none;
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    width: 300px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+">
+    <img id="rest-img" src="" alt="Фото ресторана" style="width: 100%; border-radius: 5px;">
+    <h3 id="rest-name">Название</h3>
+    <p id="rest-address">Адрес</p>
+    <p id="rest-phone">Телефон</p>
+    <a id="rest-booking" href="/booking"><button>Забронировать</button></a>
+</div>
+            </li>
+            <li class="dropdown" id="promo-block">
+    <a href="#">Акции ▾</a>
+    <div id="promo-list" class="promo-list">
+        <!-- карточки подгружаются скриптом -->
+    </div>
+</li>
+            <li><a href="/menu">Меню</a></li>
+            <li><a href="/delivery">Доставка</a></li>
+            <li><a href="/booking">Забронировать</a></li>
+            <li class="highlight"><a href="/account">Личный кабинет</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="footer-info">
+        <p>📍 Адрес: Москва, ул. Тверская, 1</p>
+        <p>📞 Телефон: +7 (900) 123-45-67</p>
+        <p>📧 Email: hello@resto.example</p>
+        <p>💬 Telegram: <a href="https://t.me/your_restaurant_bot">@your_restaurant_bot</a></p>
+        <p>⭐ Отзывы: <a href="https://yandex.ru/maps/org/1234567890" target="_blank">Яндекс.Карты</a></p>
+    </div>
+</footer>
+
+<script>
+const restaurants = {
+    "Ресторан на Тверской": {
+        name: "Ресторан на Тверской",
+        img: "/static/tverskaya.jpg",
+        address: "Москва, ул. Тверская, 10",
+        phone: "+7 (495) 123-45-67"
+    },
+    "Ресторан на Веранде": {
+        name: "Ресторан на Веранде",
+        img: "/static/veranda.jpg",
+        address: "Москва, ул. Садовая, 5",
+        phone: "+7 (495) 765-43-21"
+    },
+    "Ресторан в Сити": {
+        name: "Ресторан в Сити",
+        img: "/static/city.jpg",
+        address: "Москва, Пресненская наб., 12",
+        phone: "+7 (495) 111-22-33"
+    }
+};
+
+document.querySelectorAll('.dropdown-menu li a').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const data = restaurants[link.textContent];
+        if (data) {
+            const card = document.getElementById("restaurant-info");
+            card.style.display = "block";
+            document.getElementById("rest-img").src = data.img;
+            document.getElementById("rest-name").textContent = data.name;
+            document.getElementById("rest-address").textContent = "📍 " + data.address;
+            document.getElementById("rest-phone").textContent = "📞 " + data.phone;
+        }
+    });
+});
+
+// Скрытие карточки при уходе мыши
+document.getElementById("restaurant-block").addEventListener("mouseleave", () => {
+    document.getElementById("restaurant-info").style.display = "none";
+});
+</script>
+<script>
+const promotions = [
+    {
+        title: "Скидка 20% на пасту",
+        description: "До конца недели получи скидку на все блюда из раздела «Паста».",
+        img: "/static/promo1.jpg",
+        date: "До 25 мая"
+    },
+    {
+        title: "Живой джаз по пятницам",
+        description: "Вечера с живой музыкой и бесплатным бокалом вина каждому гостю.",
+        img: "/static/promo2.jpg",
+        date: "Опубликовано 15 мая"
+    }
+];
+
+const promoList = document.getElementById("promo-list");
+promotions.forEach(promo => {
+    const card = document.createElement("div");
+    card.className = "promo-card";
+    card.innerHTML = `
+        <img src="${promo.img}" alt="">
+        <div class="info">
+            <h4>${promo.title}</h4>
+            <p>${promo.description}</p>
+            <div class="date">${promo.date}</div>
+        </div>
+    `;
+    promoList.appendChild(card);
+});
+
+// Показываем при наведении (ПК) и тапе (моб.)
+const promoBlock = document.getElementById("promo-block");
+
+promoBlock.addEventListener("mouseenter", () => {
+    promoList.style.display = "block";
+});
+promoBlock.addEventListener("mouseleave", () => {
+    promoList.style.display = "none";
+});
+</script>
+
+</body>
+</html>
