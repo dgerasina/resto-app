@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>{% block title %}Сеть ресторанов{% endblock %}</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="fire-theme">
 
 <header>
     <nav>
@@ -149,6 +150,8 @@ promoBlock.addEventListener("mouseleave", () => {
     promoList.style.display = "none";
 });
 </script>
-
+<video autoplay muted loop id="bg-video">
+  <source src="/static/fireplace.mp4" type="video/mp4">
+</video>
 </body>
 </html>

@@ -100,3 +100,172 @@
     font-size: 12px;
     color: #888;
 }
+
+body.fire-theme {
+    background-color: #1c1c1c;
+    color: #f5f1ee;
+    font-family: 'Georgia', serif;
+    background-image: url('/static/fire-bg.jpg'); /* если есть фото */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.nav li a {
+    color: #e0b089;
+    transition: all 0.3s ease;
+}
+
+.nav li a:hover,
+.nav li.highlight a {
+    background-color: #3e2f25;
+    color: #f5f1ee;
+    border-radius: 6px;
+}
+
+.card {
+    background-color: #3e2f25;
+    color: #f5f1ee;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+
+button {
+    background-color: #a67858;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e0b089;
+}
+body.fire-theme {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+body.fire-theme {
+    background: linear-gradient(
+        rgba(28, 28, 28, 0.8),
+        rgba(28, 28, 28, 0.8)
+      ),
+      url("/static/fire-blur.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #f5f1ee;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+body.fire-theme {
+    background: linear-gradient(
+        rgba(28, 28, 28, 0.8),
+        rgba(28, 28, 28, 0.8)
+      ),
+      url("/static/fire_blur.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #f5f1ee;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+body.fire-theme {
+    font-family: 'Manrope', sans-serif;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+button {
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 200, 150, 0.5);
+}
+.card-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+#restaurant-info {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 320px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    color: #fdf6f0;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+#restaurant-info h3 {
+    color: #ffe8c4;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#restaurant-info p {
+    margin: 4px 0;
+}
+
+#restaurant-info img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+#rest-booking button {
+    background-color: #b47b56;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#rest-booking button:hover {
+    background-color: #a56946;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    object-fit: cover;
+    z-index: -10;
+    filter: blur(6px) brightness(0.5);
+}
+.footer-info a {
+    color: #ffd6a0; /* мягкий бежевый */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.footer-info a:hover {
+    text-decoration: underline;
+    color: #fff0d6; /* почти белый */
+}
